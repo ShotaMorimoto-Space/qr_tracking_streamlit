@@ -33,8 +33,13 @@ def generate_uids_ui():
                 uid=new_uid,
                 target_url=target_url
             )
+
+            # RenderのURL（デプロイ済みのサービスのURL）
+            base_tracking_url = "https://qr-tracking-streamlit.onrender.com/track"
+
+
             # 完成版URLを組み立てる
-            full_url = f"{target_url}?uid={new_uid}"
+            full_url = f"{base_tracking_url}?uid={new_uid}"
             uid_list.append({
                 "client_id": i,
                 "zebra_id": zebra_id,

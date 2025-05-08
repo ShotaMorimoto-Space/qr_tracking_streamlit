@@ -1,2 +1,5 @@
-# qr_tracking
-fujiplusのQRトラッキング用
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart

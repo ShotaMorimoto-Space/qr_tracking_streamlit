@@ -1,9 +1,13 @@
 # backend/database.py
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# SQLite接続パス（tracking_app_dbフォルダ内）
-DATABASE_URL = "sqlite:///tracking_app_db/access_logs.db"
+# この database.py ファイルの絶対パス取得
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# プロジェクトルートから tracking_app_db/access_logs.db を指定
+DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, '../tracking_app_db/access_logs.db')}"
 
 # エンジン作成
 engine = create_engine(

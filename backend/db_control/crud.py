@@ -1,5 +1,6 @@
 # backend/crud.py
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 from backend.db_control.models import AccessLog
 from datetime import datetime
 
@@ -21,7 +22,7 @@ def create_uid(db: Session, client_id: int, zebra_id: str, campaign_name: str, u
 
 # UIDを元にアクセスカウントを1増やす
 def update_access_log(db: Session, uid: str):
-    access_log = db.query(AccessLog).filter(AccessLog.uid.ilike(uid)).first()
+    access_log = db.query(AccessLog).filter(func.lower(AccessLog.uid) == uid.lower()).first()
     if access_log:
         access_log.access_count += 1
         access_log.last_accessed_at = datetime.now()

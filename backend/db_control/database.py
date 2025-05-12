@@ -14,7 +14,11 @@ load_dotenv()
 #DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 # PostgreSQL用の接続文字列（Renderの情報に置き換えてください）
-DATABASE_URL = "postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DB_NAME>"
+# .env or Environment Variables から取得！
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set. Please check your environment variables.")
 
 engine = create_engine(DATABASE_URL)
 

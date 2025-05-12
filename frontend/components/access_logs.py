@@ -1,13 +1,13 @@
 # frontend/components/access_logs.py
 import streamlit as st
 import pandas as pd
-from backend.db_control.database import SessionLocal
+from frontend.utils.db_connect import get_streamlit_db
 from backend.db_control import crud
 
 def access_logs_ui():
     st.header("アクセスログ一覧")
 
-    db = SessionLocal()
+    db = get_streamlit_db()
 
     # 全レコード取得
     logs = crud.get_all_logs(db)

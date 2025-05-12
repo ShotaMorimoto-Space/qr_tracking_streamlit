@@ -3,7 +3,7 @@ import streamlit as st
 import uuid
 import pandas as pd
 from sqlalchemy.orm import Session
-from backend.db_control.database import SessionLocal
+from frontend.utils.db_connect import get_streamlit_db
 from backend.db_control import crud
 
 def generate_uids_ui():
@@ -20,7 +20,7 @@ def generate_uids_ui():
             st.error("すべての項目を入力してください。")
             return
 
-        db = SessionLocal()
+        db = get_streamlit_db()
         uid_list = []  # 生成したUIDとURLを保存するリスト
 
         for i in range(1, num_uids + 1):

@@ -13,6 +13,8 @@ menu = st.sidebar.selectbox(
     ("UID一括生成", "アクセスログ一覧")
 )
 
+st.write("portの型:", type(st.secrets["database"]["port"]))
+
 if menu == "UID一括生成":
     generate_uids_ui()
 elif menu == "アクセスログ一覧":

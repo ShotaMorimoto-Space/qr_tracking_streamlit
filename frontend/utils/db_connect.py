@@ -7,7 +7,7 @@ def get_streamlit_db():
     db_user = st.secrets["database"]["user"]
     db_pass = st.secrets["database"]["password"]
     db_host = st.secrets["database"]["host"]
-    db_port = int(st.secrets["database"]["port"])
+    db_port = int(str(st.secrets["database"]["port"]).strip())
     db_name = st.secrets["database"]["database"]
 
     db_url = f"postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
